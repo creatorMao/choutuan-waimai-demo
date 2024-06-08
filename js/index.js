@@ -3,7 +3,15 @@
  */
 class UIGoods {
   constructor(goodsInfo) {
-    this.goodsInfo = goodsInfo;
+    Object.defineProperty(this, "goodsInfo", {
+      get() {
+        return goodsInfo;
+      },
+      set() {
+        throw new Error("goodsInfo属性是只读的，不允许修改");
+      },
+    });
+
     this.choose = 0;
   }
 
